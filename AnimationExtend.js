@@ -40,7 +40,7 @@ Imported.AnimationExtend = true;
  *
  * 【パラメータ解説】
  * アニメーションID : アニメーションのID
- * 反転表示フラグ : trueで左右反転表示、falseで反転無し
+ * 反転表示フラグ : trueまたはonで左右反転表示、falseまたはoffで反転無し
  * 遅延フレーム : アニメーションを表示するまでの遅延フレーム
  * 拡大率 : アニメーションを表示する大きさ(%)。デフォルトは100
  * 角度 : アニメーションの表示角度
@@ -123,7 +123,10 @@ Game_Interpreter.prototype.pluginCommand = function(command, args) {
 		var animationId = Number(args[idx++]);
 		if(!animationId)return;
 
-		var mirror = args[idx++] === 'true';
+		var argMirror = args[idx++];
+		argMirror = argMirror ? argMirror.toLowerCase() : null;
+		var mirror = argMirror === 'true' || argMirror === 'on';
+		
 		var delay = supplementNum(0,args[idx++]);
 		var scale = supplementNum(100,args[idx++])/100;
 		var rotation = supplementNum(0,args[idx++])/180*Math.PI;
@@ -300,7 +303,6 @@ Sprite_Animation.prototype.processTimingData = function(timing) {
 		timing.se.volume = volume;
 	}
 };
-
 
 
 })();
