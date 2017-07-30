@@ -7,6 +7,7 @@
 //============================================================================= 
 // Version
 // 1.1.1 2017/07/30 拡大率を指定していないときの不具合修正
+//					animation waitコマンドを実装
 // 1.1.0 2017/07/27 パラメータ記述方法の追加
 // 1.0.1 2017/07/20 パラメータの順序を入れ替え
 // 1.0.0 2017/07/20 初版
@@ -105,6 +106,12 @@ Imported.AnimationExtend = true;
  * 　 拡大率５０％でx座標に変数２の値、yっ座標に変数３の値ずらして表示。
  *
  *
+ * 【アニメーション完了まで待機】
+ * 上記アニメーションプラグインコマンドの直後に、
+ * animation wait
+ * のプラグインコマンドを実行することで、
+ * アニメーションが完了するまで待機。
+ *
  *
  * 【アニメーションの１コマあたりのフレーム数の設定】
  * アニメーション名に[Fフレーム数]を戦闘につけて設定
@@ -181,7 +188,11 @@ Game_Interpreter.prototype.pluginCommand = function(command, args) {
 		var idx = 0;
 		var targetType = args[idx++].toLowerCase();
 		var target;
-		if(targetType === '0' || targetType === 'this'){
+
+		if(targetType === 'wait'){
+			this.setWaitMode('animation');
+			return;
+		}else if(targetType === '0' || targetType === 'this'){
 			target = this.character();
 		}else if(['player','プレイヤー'].contains(targetType)){
 			target = $gamePlayer;
@@ -263,8 +274,10 @@ Game_Interpreter.prototype.pluginCommand = function(command, args) {
 		if(!animationId)return;
 		if(target.requestAnimation){
 			target.requestAnimation(animationId, mirror, delay, scale, rotation, offsetX, offsetY, seVolume);
+			this._character = target;
 		}else if(target.startAnimation){
 			target.startAnimation(animationId, mirror, delay, scale, rotation, offsetX, offsetY, seVolume);    
+			this._character = target;
 		}
 	}
 };
