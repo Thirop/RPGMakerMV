@@ -6,6 +6,7 @@
 // http://opensource.org/licenses/mit-license.php
 //============================================================================= 
 // Version
+// 1.1.1 2017/07/30 拡大率を指定していないときの不具合修正
 // 1.1.0 2017/07/27 パラメータ記述方法の追加
 // 1.0.1 2017/07/20 パラメータの順序を入れ替え
 // 1.0.0 2017/07/20 初版
@@ -205,7 +206,7 @@ Game_Interpreter.prototype.pluginCommand = function(command, args) {
 
 
 		var animationId = 0;
-		var scale = 100;
+		var scale = 1;
 		var rotation = 0;
 		var offsetX = 0;
 		var offsetY = 0;
