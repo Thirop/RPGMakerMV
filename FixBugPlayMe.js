@@ -20,7 +20,7 @@
 var _WebAudio_startPlaying = WebAudio.prototype._startPlaying;
 WebAudio.prototype._startPlaying = function(loop, offset) {
     if (this._loopLength > 0) {
-	while (offset >= this._loopStart + this._loopLength) {
+        while (offset >= this._loopStart + this._loopLength) {
             offset -= this._loopLength;
         }
     }
