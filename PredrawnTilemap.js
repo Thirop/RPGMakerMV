@@ -121,7 +121,7 @@ PredrawnTilemap.prototype.setData = function(width, height, data) {
     this._mapWidth = width;
     this._mapHeight = height;
 
-    this._createLayersPrerenderMode();
+    this._createLayers();
 };
 
 PredrawnTilemap.prototype.refreshTileset = function() {
@@ -149,9 +149,8 @@ PredrawnTilemap.prototype.updateTransform = function() {
 };
 
 PredrawnTilemap.prototype._createLayers = function(){
-};
+    if(!this._mapData)return;
 
-PredrawnTilemap.prototype._createLayersPrerenderMode = function(){
     var width = this._width;
     var height = this._height;
 
