@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>SE確認ツール</title>
+</head>
+<body>
+<script type="text/javascript">
+var $fileNum = 0;
+window.onload = function(){
+	var defaultVolume = 0.5;
+    changeAllVolume(defaultVolume);
+    document.getElementById("masterVolume").value=defaultVolume;
+}
+function changeAllVolume($volume) {
+	for(var i=0; i<$fileNum; i=(i+1)|0){
+		var id = "audio" + i;
+	    var audio = document.getElementById(id);
+	    audio.volume = $volume;
+	}
+}
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+//使用するフォルダ名を変えたいときは以下の'se'部分を変更
+var $folderName = 'se';
+</script>
+
+<!-- 
+□基本の使い方
+・ツクールのプロジェクトデータのseフォルダ(audio/se)をse_check.htmlと同じフォルダにコピペ。
+・se_check.htmlをブラウザで開く。(Safariはoggファイルを再生できないのでChrome推奨)
+
+□RTP以外のSE素材を追加している場合
+・以下,<div id="se_list"> から </div>の間にseフォルダ内のoggファイル名を拡張子ありで列挙。
+＊あらかじめRTP効果音のファイル名が列挙してるので、SEを追加削除してる方は適宜編集してください。
+　テキストエディタによってはファイルを全て選択してコピーし、
+　エディタにペーストするとファイル名をペーストできます。
+＊m4aファイルは再生できないので注意。(mp3,wavファイルはおそらく再生可能)
+-->
+
+
+
+<p>ボリューム一括変更：<input type="range" value="0.5" id="masterVolume" min="0" max="1" step="0.05" onchange="changeAllVolume(this.value)"></p>
+
+
+
+<!--以下、seフォルダ内のファイル名(.ogg)を列挙。-->
+<div id="se_list">
+Absorb1.ogg
+Absorb2.ogg
+Applause1.ogg
+Applause2.ogg
+Attack1.ogg
+Attack2.ogg
+Attack3.ogg
+Battle1.ogg
+Battle2.ogg
+Battle3.ogg
+Bell1.ogg
+Bell2.ogg
+Bell3.ogg
+Blind.ogg
+Blow1.ogg
+Blow2.ogg
+Blow3.ogg
+Book1.ogg
+Book2.ogg
+Break.ogg
+Buzzer1.ogg
+Buzzer2.ogg
+Cancel1.ogg
+Cancel2.ogg
+Cat.ogg
+Chest1.ogg
+Chest2.ogg
+Close1.ogg
+Close2.ogg
+Close3.ogg
+Coin.ogg
+Collapse1.ogg
+Collapse2.ogg
+Collapse3.ogg
+Collapse4.ogg
+Computer.ogg
+Cow.ogg
+Crash.ogg
+Crossbow.ogg
+Crow.ogg
+Cursor1.ogg
+Cursor2.ogg
+Damage1.ogg
+Damage2.ogg
+Damage3.ogg
+Damage4.ogg
+Damage5.ogg
+Darkness1.ogg
+Darkness2.ogg
+Darkness3.ogg
+Darkness4.ogg
+Darkness5.ogg
+Decision1.ogg
+Decision2.ogg
+Devil1.ogg
+Devil2.ogg
+Disappointment.ogg
+Dive.ogg
+Dog.ogg
+Door1.ogg
+Door2.ogg
+Door3.ogg
+Door4.ogg
+Down1.ogg
+Down2.ogg
+Earth1.ogg
+Earth2.ogg
+Earth3.ogg
+Earth4.ogg
+Earth5.ogg
+Electrocardiogram.ogg
+Equip1.ogg
+Equip2.ogg
+Evasion1.ogg
+Evasion2.ogg
+Explosion1.ogg
+Explosion2.ogg
+Fall.ogg
+Fire1.ogg
+Fire2.ogg
+Fire3.ogg
+Flash1.ogg
+Flash2.ogg
+Frog.ogg
+Growl.ogg
+Gun1.ogg
+Gun2.ogg
+Hammer.ogg
+Heal1.ogg
+Heal2.ogg
+Heal3.ogg
+Horn.ogg
+Horse.ogg
+Ice1.ogg
+Ice2.ogg
+Ice3.ogg
+Ice4.ogg
+Ice5.ogg
+Item1.ogg
+Item2.ogg
+Item3.ogg
+Jump1.ogg
+Jump2.ogg
+Key.ogg
+Knock.ogg
+Laser1.ogg
+Laser2.ogg
+Laugh.ogg
+Launch.ogg
+Leakage.ogg
+Liquid.ogg
+Load.ogg
+Machine.ogg
+Magic1.ogg
+Magic2.ogg
+Magic3.ogg
+Magic4.ogg
+Miss.ogg
+Monster1.ogg
+Monster2.ogg
+Monster3.ogg
+Monster4.ogg
+Monster5.ogg
+Move1.ogg
+Move2.ogg
+Move3.ogg
+Move4.ogg
+Move5.ogg
+Neon.ogg
+Noise.ogg
+Open1.ogg
+Open2.ogg
+Open3.ogg
+Open4.ogg
+Open5.ogg
+Paralyze1.ogg
+Paralyze2.ogg
+Paralyze3.ogg
+Parry.ogg
+Phone.ogg
+Poison.ogg
+Pollen.ogg
+Powerup.ogg
+Push.ogg
+Raise1.ogg
+Raise2.ogg
+Recovery.ogg
+Reflection.ogg
+Run.ogg
+Saint1.ogg
+Saint2.ogg
+Saint3.ogg
+Saint4.ogg
+Saint5.ogg
+Sand.ogg
+Save.ogg
+Scream.ogg
+Sheep.ogg
+Shop1.ogg
+Shop2.ogg
+Shot1.ogg
+Shot2.ogg
+Shot3.ogg
+Silence.ogg
+Siren.ogg
+Skill1.ogg
+Skill2.ogg
+Skill3.ogg
+Slash1.ogg
+Slash2.ogg
+Slash3.ogg
+Slash4.ogg
+Slash5.ogg
+Sleep.ogg
+Sound1.ogg
+Sound2.ogg
+Sound3.ogg
+Splash.ogg
+Stare.ogg
+Starlight.ogg
+Switch1.ogg
+Switch2.ogg
+Switch3.ogg
+Sword1.ogg
+Sword2.ogg
+Sword3.ogg
+Sword4.ogg
+Sword5.ogg
+Teleport.ogg
+Thunder1.ogg
+Thunder2.ogg
+Thunder3.ogg
+Thunder4.ogg
+Thunder5.ogg
+Thunder6.ogg
+Thunder7.ogg
+Thunder8.ogg
+Thunder9.ogg
+Thunder10.ogg
+Transceiver.ogg
+Twine.ogg
+Up1.ogg
+Up2.ogg
+Up3.ogg
+Up4.ogg
+Water1.ogg
+Water2.ogg
+Water3.ogg
+Water4.ogg
+Water5.ogg
+Wind1.ogg
+Wind2.ogg
+Wind3.ogg
+Wind4.ogg
+Wind5.ogg
+Wind6.ogg
+Wind7.ogg
+Wolf.ogg
+</div>
+
+
+
+
+
+<script type="text/javascript">
+var folderName = $folderName;
+var div = document.getElementById('se_list');
+var fileListString = div.innerHTML;
+var fileNames = fileListString.split(/\n/);
+var html = "<table border='1'>";
+var length = fileNames.length;
+var num = 0;
+for(var i=0; i<length; i=i+=1){
+	var fileName = fileNames[i];
+	if(fileName===""){
+		continue;
+	}
+	var expansion = fileName.split('.')[1];
+	if(!expansion)continue;
+
+	var type = expansion==="m4a" ? "aac" : expansion;
+	var id = "audio"+num;
+	html += "<tr><th>"+fileName+"</th>"
+			+"<th><audio id='"+id+"' preload='none' controls='volume:0'><source src = '"+folderName+'/'+fileName+"' type='audio/"+expansion+"'><audio></th></tr>";
+	num+=1;
+}
+$fileNum = num;
+html += '</table>';
+div.innerHTML = html;
+</script>
+
+
+</body>
+</html>
