@@ -74,7 +74,6 @@ Sprite_Animation.prototype.updateCellSprite = function(sprite, cell) {
     	var useBitmap1 = pattern < 100;
     	var frameSize = useBitmap1 ? this._frameSize1 : this._frameSize2;
     	var scaleAdjustRate = 192/frameSize;
-    	console.log(frameSize)
         var sx = pattern % 5 * frameSize;
         var sy = Math.floor(pattern % 100 / 5) * frameSize;
         sprite.setFrame(sx, sy, frameSize, frameSize);
