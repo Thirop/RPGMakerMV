@@ -7,6 +7,7 @@
 //============================================================================= 
 // Version
 // 1.0.0 2018/02/24 初版
+// 1.0.1 2018/05/27 ソート処理高速化による表示順不具合修正
 //=============================================================================
 
 
@@ -249,11 +250,14 @@ if(hackSortChildren){
 
         var children = this.children;
         var zCache = this._zCache;
+	var yCache = this._yCache;
         var zChanged = !zCache || zCache.length!==children.length;
         if(!zChanged){
             length = children.length;
             for(i = 0; i<length; i=(i+1)|0){
-                if(children[i].z !== zCache[i]){
+		if(children[i].z !== zCache[i] || 
+                   children[i].y !== yCache[i])
+		{
                     zChanged = true;
                     break;
                 }
@@ -263,10 +267,13 @@ if(hackSortChildren){
             this.children.sort(this._compareChildOrder.bind(this));
             length = children.length;
             zCache = [];
+	    yCache = [];
             for(i = 0; i<length; i=(i+1)|0){
                 zCache[i] = children[i].z;
+		yCache[i] = children[i].y;
             }
             this._zCache = zCache;
+	    this._yCache = yCache;
         }
     };
 }
