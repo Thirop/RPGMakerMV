@@ -17,11 +17,13 @@
  * @help TRP_RequiredAssets.jsとともにプラグインをONに設定して下さい。
  * (デプロイ時はTRP_AssetsRegister.jsはOFFにしても大丈夫です。)
  *
+ * このプラグインはjs/plugins/TRP_AssetsRegister.jsを上書きすることで、
  * テストプレイ中に一度でも再生したオーディオ、表示した画像データを
  * デプロイ時の「未使用ファイルを含まない」で弾かれないようにします。
+ * 無いと思いますが、同名のプラグインがあれば上書きされますのでご注意下さい。
  *
  * 一度登録したアセットを取り消す場合は、
- * TRP_AsetsRegister.jsをテキストエディタで開き、
+ * TRP_RequiredAssets.jsをテキストエディタで開き、
  * 該当のアセットの行を削除して下さい。
  */
 //=============================================================================
@@ -151,6 +153,8 @@ if(Utils.isOptionValid('test')){
 
 		var data = '/*:\n';
 
+		this._registeredAssets = this._registeredAssets.sort();
+
 		this._registeredAssets.forEach(function(asset){
 			data += '* @requiredAssets ' + asset + '\n';
 		});
@@ -180,12 +184,16 @@ if(Utils.isOptionValid('test')){
  * @plugindesc 使用アセットをズボラに登録します
  * @author Thirop
  *
- * @help TRP_RegisteredAssets.jsとともにプラグインをONに設定して下さい。
+ * @help TRP_RequiredAssets.jsとともにプラグインをONに設定して下さい。
+ * (デプロイ時はTRP_AssetsRegister.jsはOFFにしても大丈夫です。)
+ *
+ * このプラグインはjs/plugins/TRP_AssetsRegister.jsを上書きすることで、
  * テストプレイ中に一度でも再生したオーディオ、表示した画像データを
  * デプロイ時の「未使用ファイルを含まない」で弾かれないようにします。
+ * 無いと思いますが、同名のプラグインがあれば上書きされますのでご注意下さい。
  *
  * 一度登録したアセットを取り消す場合は、
- * TRP_AsetsRegister.jsをテキストエディタで開き、
+ * TRP_RequiredAssets.jsをテキストエディタで開き、
  * 該当のアセットの行を削除して下さい。
  */
 //=============================================================================
