@@ -22,6 +22,9 @@
  * デプロイ時の「未使用ファイルを含まない」で弾かれないようにします。
  * 無いと思いますが、同名のプラグインがあれば上書きされますのでご注意下さい。
  *
+ * ファイルの上書きはシーンの切り替え時に行われます。
+ * (メニューの開閉をすると、必要があれば上書きされます）
+ *
  * 一度登録したアセットを取り消す場合は、
  * TRP_RequiredAssets.jsをテキストエディタで開き、
  * 該当のアセットの行を削除して下さい。
@@ -168,8 +171,7 @@ if(Utils.isOptionValid('test')){
 		var filePath = path.join(base, 'js/plugins/TRP_RequiredAssets.js');
 		fs.writeFileSync(filePath, data);
 		console.log('TRP_RequiredAssets.jsを更新しました。(登録ファイル数:'+this._registeredAssets.length+')');
-
-		this._newAssetRegistered = false;
+ this._newAssetRegistered = false;
 	};
 }
 
@@ -192,8 +194,12 @@ if(Utils.isOptionValid('test')){
  * デプロイ時の「未使用ファイルを含まない」で弾かれないようにします。
  * 無いと思いますが、同名のプラグインがあれば上書きされますのでご注意下さい。
  *
+ * ファイルの上書きはシーンの切り替え時に行われます。
+ * (メニューの開閉をすると、必要があれば上書きされます）
+ *
  * 一度登録したアセットを取り消す場合は、
  * TRP_RequiredAssets.jsをテキストエディタで開き、
  * 該当のアセットの行を削除して下さい。
  */
 //=============================================================================
+
